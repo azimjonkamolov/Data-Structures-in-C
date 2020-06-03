@@ -66,6 +66,10 @@ void functionOne()
 {
 	int i, n, arr[MAX_SIZE];
 	
+	printf("Enter the number of elements in the array: ");
+	scanf("%d", &n);
+	printf("Enter %d elements: \n", n);
+	
 	getArray(n, arr);
 	
 	printf("n is %d\n", n);
@@ -84,6 +88,10 @@ void functionTwo()
 	int i, n, arr[MAX_SIZE], sum=0;
 	float mean = 0.0;
 	
+	printf("Enter the number of elements in the array: ");
+	scanf("%d", &n);
+	printf("Enter %d elements: \n", n);
+	
 	getArray(n, arr);
 	
 	for(i=0;i<n;i++)
@@ -101,6 +109,10 @@ void functionTwo()
 void functionThree()
 {
 	int i, n, arr[MAX_SIZE], small, pos;
+	
+	printf("Enter the number of elements in the array: ");
+	scanf("%d", &n);
+	printf("Enter %d elements: \n", n);
 	
 	getArray(n, arr);
 	
@@ -164,18 +176,12 @@ void functionFive()
 		printf("arr[%d] = ", i);
 		scanf("%d", &arr[i]);
 	}
-	
-	
-	
-	
+
 }
 
 void getArray(int n, int arr[])
 {
 	int i;
-	printf("Enter the number of elements in the array: ");
-	scanf("%d", &n);
-	printf("Enter %d elements: \n", n);
 	for(i=0;i<n;i++)
 	{
 		printf("arr[%d] = ", i);
