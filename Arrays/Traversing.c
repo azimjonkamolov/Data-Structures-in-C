@@ -1,6 +1,7 @@
 // Traversing in an array in C
 #include<stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 #define MAX_SIZE 10
 
@@ -44,12 +45,12 @@ int main()
 			case 4:
 				functionFour();
 				break;
-//			case 5:
-//				functionFive();
-//				break;
-//			case 6:
-//				functionSix();
-//				break;
+			case 5:
+				functionFive();
+				break;
+			case 6:
+				functionSix();
+				break;
 			case 7:
 				printf("bye!");
 				exit(1);
@@ -136,6 +137,10 @@ void functionFour()
 {
 	int i, n, arr[MAX_SIZE], large, second_large;
 	
+	printf("Enter the number of elements in the array: ");
+	scanf("%d", &n);
+	printf("Enter %d elements: \n", n);
+	
 	getArray(n, arr);
 	
 	large= arr[0];
@@ -167,17 +172,60 @@ void functionFour()
 // A function to enter n number of digits. Form a number using these digits
 void functionFive()
 {
-	int i, n, arr[MAX_SIZE], formNumber;
+	int i, n, arr[MAX_SIZE], formNumber=0;
+	
+	printf("Enter the number of elements in the array: ");
+	scanf("%d", &n);
+	printf("Enter %d elements: \n", n);
+	
+	getArray(n, arr);
+	
+	i = 0;
+	
+	while(i<n)
+	{
+//		printf("formNumber is %d\n", formNumber);
+//		printf("arr[%d] is %d\n", i, arr[i]);
+//		printf("pow(10, %d) is %d\n", pow(10,i));
+		formNumber = formNumber + arr[i] * pow(10, i);
+		i++;
+	}
+	
+	printf("The number is: %d\n", formNumber);
+
+	space();
+}
+
+void functionSix()
+{
+	int i, n, j, arr[MAX_SIZE], formNumber=0, flag=0;
+	
+	printf("Enter the number of elements in the array: ");
+	scanf("%d", &n);
+	printf("Enter %d elements: \n", n);
 	
 	getArray(n, arr);
 	
 	for(i=0;i<n;i++)
 	{
-		printf("arr[%d] = ", i);
-		scanf("%d", &arr[i]);
+		for(j=i+1;j<n;j++)
+		{
+			if(arr[i] == arr[j] && i!=j)
+			{
+				flag = 1;
+				printf("Dublicate numbers found at locations %d and %d\n", i, j);
+			}
+		}
 	}
-
+	
+	if(flag==0)
+	{
+		printf("No dublicates Found\n");
+	}
+	
+	space();
 }
+
 
 void getArray(int n, int arr[])
 {
