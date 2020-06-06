@@ -1,11 +1,11 @@
-// Inserting in an array in C
+// Deleting in an array in C
 #include <stdio.h>
 #include <stdlib.h>
 
 #define MAX_SIZE 20
 
-void functionSeven();
-void functionEight();
+void functionNine();
+void functionTen();
 
 void getArray();
 void space();
@@ -17,23 +17,24 @@ int main()
 	while(1)
 	{
 		printf("Enter the number for the one of the options bellow: \n");
-		printf("7. A program to insert a number at a given location in an array.\n");
-		printf("8. A program to insert a number in an array that is already sorted in ascending order.\n");
+		printf("9. A program to delete a number from a given location in an array.\n");
+		printf("10. A program to delete a number from an array that is already sorted in ascending order.\n");
 		printf("0. To exit!\n");
+		
 		scanf("%d", &option);
 
 		switch(option)
 		{
-			case 7:
-				functionSeven();
+			case 9:
+				functionNine();
 				break;
-			case 8:
-				functionEight();
+			case 10:
+				functionTen();
 				break;
 
 			case 0:
 				printf("bye!");
-				exit(1);
+				exit(0);
 			default:
 				printf("Undefined number!");
 		}					
@@ -43,63 +44,60 @@ int main()
 }
 
 // A function to insert a number at a given location in an array
-void functionSeven()
+void functionNine()
 {
-	int i, n, num, pos, arr[MAX_SIZE];
+	int i, n,pos, arr[MAX_SIZE];
 	
 	printf("Enter the number of elements in the array: ");
 	scanf("%d", &n);
 	
 	getArray(n, arr);
 	
-	printf("Enter the number to be inserted: ");
-	scanf("%d", &num);
-	printf("Enter the number at which the number has to be added: ");
+	printf("Enter the position from which the number has to be deleted: ");
 	scanf("%d", &pos);
-	for(i=n-1;i>=pos;i--)
+	for(i=pos;i<n-1;i++)
 	{
-		arr[i+1] = arr[i];
+		arr[i] = arr[i+1];
 	}
+	n--;
 	
-	arr[pos] = num;
-	n = n+1;
-	printf("The array after insertion of %d is: ", num);
+	printf("The array after deletion is: \n");
 	for(i=0;i<n;i++)
 	{
-		printf("\narr[%d] = %d", i, arr[i]);
+		printf("arr[%d] = %d\n", i, arr[i]);
 	}
 	
 	space();
 }
 
 // A function to insert a number in an array that is already sorted in ascending order
-void functionEight()
+void functionTen()
 {
 	int i, n, j, num, arr[10];
 	
-	printf("Enter the number of elements in the array: ");
+	printf("Enter the number of elmenets in the array: ");
 	scanf("%d", &n);
+	for(i=0;i<n;i++)
+	{
+		printf("arr[%d] = ", i);
+		scanf("%d", &arr[i]);
+	}
 	
-	getArray(n, arr);
-	
-	printf("Enter the number to be inserted: ");
+	printf("Enter the number to be deleted: ");
 	scanf("%d", &num);
 	
 	for(i=0;i<n;i++)
 	{
-		if(arr[i] > num)
+		if(arr[i] == num)
 		{
-			for(j=n-1; j>=1; j--)
+			for(j=i; j<n; j++)
 			{
-				arr[j+1] = arr[j];
+				arr[j] = arr[j+1];
 			}
-			arr[i] = num;
-			break;
 		}
 	}
-	
-	n = n+1;
-	printf("The array after insertion of %d is: \n", num);
+	n = n-1;
+	printf("The array after deletion is: \n");
 	for(i=0;i<n;i++)
 	{
 		printf("arr[%d] = %d\n", i, arr[i]);
